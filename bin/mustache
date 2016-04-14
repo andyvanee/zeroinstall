@@ -8,7 +8,7 @@ usage="Usage:\n   %s data.yml template.mustache" % sys.argv[0]
 
 def file_or_stdin(f):
     if f == '-':
-        return '\n'.join(sys.stdin.readlines())
+        return ''.join(sys.stdin.readlines())
     else:
         return open(f).read()
 
