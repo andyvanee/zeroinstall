@@ -1,6 +1,6 @@
 default: bin/mustache
 
-mustache_src=$(find src/mustache -type f)
+mustache_src=$(shell find src/mustache -type f)
 
 bin/mustache: $(mustache_src)
 	echo '#!/usr/bin/env python' > $@
