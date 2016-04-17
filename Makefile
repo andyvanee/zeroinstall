@@ -1,6 +1,10 @@
-default: bin/mustache.zip
+default: bin/mustache
 
-.PHONY: bin/mustache.zip
-bin/mustache.zip:
-	rm -f bin/mustache.zip
-	cd src/mustache && zip -r ../../bin/mustache.zip *
+mustache_src=$(find src/mustache -type f)
+
+bin/mustache: $(mustache_src)
+	echo '#!/usr/bin/env python' > $@
+	python -m zipfile -c mustache_tmp.zip src/mustache/*
+	cat mustache_tmp.zip >> $@
+	chmod +x $@
+	rm mustache_tmp.zip
